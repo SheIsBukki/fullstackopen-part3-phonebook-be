@@ -3,7 +3,6 @@ const app = express();
 const morgan = require("morgan");
 // const cors = require('cors')
 app.use(express.json());
-app.use(express.static("dist"));
 
 morgan.token("body", function getBody(req) {
   return JSON.stringify(req.body);
@@ -31,6 +30,7 @@ const requestLogger = morgan(
 app.use(reqLogger);
 app.use(requestLogger);
 // app.use(cors())
+app.use(express.static("dist"));
 
 let persons = [
   {
@@ -130,4 +130,4 @@ app.listen(PORT, () => {
 });
 // const PORT = 3001;
 // app.listen(PORT);
-console.log(`Listening on ${PORT}`);
+// console.log(`Listening on ${PORT}`);
